@@ -11,3 +11,16 @@
     y1: 2024
   literatura: El Nino economic impact Latin America agriculture
   fecha: '2026-11-26'
+  informe: https://bryan-roman-ai.github.io/laboratorio-datos/nino-latam-agro/
+- id: eci-crecimiento-ecuador
+  estado: hecho
+  titulo: ¿La complejidad económica predice el crecimiento? Ecuador en el Atlas de
+    Harvard
+  pregunta: ¿Los países que exportaban productos más complejos en 2000 crecieron más
+    hasta 2023, y dónde queda Ecuador?
+  receta: atlas_eci
+  params:
+    y0: 2000
+    y1: 2023
+  literatura: economic complexity index growth prediction
+  fecha: '2026-11-26'

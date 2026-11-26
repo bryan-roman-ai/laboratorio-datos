@@ -7,5 +7,6 @@ Bryan Román · Economista (UTPL), Magíster en Transformación Digital (UNIR) �
 ## Estudios
 
 - [El Niño y la agricultura de América Latina, país por país](nino-latam-agro/) — ¿Cuánto cambia el crecimiento agrícola de cada país latinoamericano cuando El Niño se intensifica, y depende de si exporta alimentos?
+- [¿La complejidad económica predice el crecimiento? Ecuador en el Atlas de Harvard](eci-crecimiento-ecuador/) — ¿Los países que exportaban productos más complejos en 2000 crecieron más hasta 2023, y dónde queda Ecuador?
 
 Aviso: análisis personal con fines educativos; no es asesoría financiera ni opinión de ninguna institución.

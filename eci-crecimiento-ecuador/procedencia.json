@@ -1,0 +1,38 @@
+[
+ {
+  "archivo": "data/atlas_paises.json",
+  "url": "https://atlas.hks.harvard.edu/api/graphql",
+  "metodo": "POST",
+  "consulta": {
+   "query": "{ locationCountry{ countryId iso3Code nameShortEs inRankings } }"
+  },
+  "descargado": "2026-11-26T18:03:23",
+  "sha256": "4399878a2c01a890265785f7643f81262aa1f3a81d5f8b73d352684fa05f5cde"
+ },
+ {
+  "archivo": "data/atlas_countryYear_2000_2023.json",
+  "url": "https://atlas.hks.harvard.edu/api/graphql",
+  "metodo": "POST",
+  "consulta": {
+   "query": "{ countryYear(yearMin:2000, yearMax:2023){ countryId year eci exportValue importValue gdppc gdppcConst population growthProj } }"
+  },
+  "descargado": "2026-11-26T18:03:24",
+  "sha256": "8f6e29474b2f4a512fe81f9d054dd3845a85319d37f4a87037b4576b06fb924c"
+ },
+ {
+  "archivo": "data/wb_NY.GDP.PCAP.KD_2000.json",
+  "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.KD?format=json&date=2000&per_page=400",
+  "metodo": "GET",
+  "consulta": null,
+  "descargado": "2026-11-26T18:03:24",
+  "sha256": "9f1d5de78b7c60af6aadcbe5fcb9ed829a6de3766ce64115c41ecfe7fd8601fb"
+ },
+ {
+  "archivo": "data/wb_NY.GDP.PCAP.KD_2023.json",
+  "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.KD?format=json&date=2023&per_page=400",
+  "metodo": "GET",
+  "consulta": null,
+  "descargado": "2026-11-26T18:03:24",
+  "sha256": "29babdb00b984719cf3056c050a0ea5169dc8946c1d9bb6c20d50560259ca79a"
+ }
+]

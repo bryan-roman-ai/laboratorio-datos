@@ -1,0 +1,82 @@
+{
+ "hallazgos": [
+  "En 140 países, cada punto más de complejidad económica (ECI del Atlas de Harvard) en 2000 se asocia con 0,80 puntos porcentuales más de crecimiento anual del PIB per cápita 2000-2023, a igual ingreso inicial (p=0,000; bootstrap IC 95%: 0,42 a 1,24).",
+  "Ranking de complejidad 2023 entre 144 países con más de 1 millón de habitantes y exportaciones de más de US$ 1.000 millones: México #28, Brasil #56, Costa Rica #63, Colombia #66, Panamá #68, Uruguay #76, Argentina #77, Chile #85, Perú #100, Ecuador #112.",
+  "Ecuador: ECI -0,78 en 2000 y -1,03 en 2023; creció 1,95% anual per cápita vs 1,56% que predice el modelo con su complejidad e ingreso inicial."
+ ],
+ "checks": [
+  {
+   "nombre": "reproducción numpy",
+   "ok": true,
+   "detalle": "coeficientes idénticos"
+  },
+  {
+   "nombre": "cobertura ≥ 80 países",
+   "ok": true,
+   "detalle": "140 países"
+  },
+  {
+   "nombre": "bootstrap (1999 remuestreos) del efecto ECI",
+   "ok": true,
+   "detalle": "IC 95% 0,42 a 1,24"
+  },
+  {
+   "nombre": "sin el 2% extremo de crecimiento: mismo signo",
+   "critico": false,
+   "ok": true,
+   "detalle": "0,59 vs 0,80"
+  }
+ ],
+ "cifras": {
+  "beta_eci": 0.8013123849668973,
+  "p": 0.00014918306826827067
+ },
+ "metodo": "ECI país-año del Atlas of Economic Complexity (Growth Lab, Harvard, API GraphQL pública), países con ≥ 1 millón de habitantes y exportaciones ≥ US$ 1.000 millones en 2023. Crecimiento anual compuesto del PIB per cápita a precios constantes (Banco Mundial, NY.GDP.PCAP.KD) 2000-2023. MCO crecimiento ~ ECI inicial + log PIB pc inicial (convergencia condicional), errores HC3. Checks: reproducción numpy, bootstrap, recorte de extremos.",
+ "limitaciones": [
+  "El ECI se recalcula con cada versión del Atlas.",
+  "Correlación entre países: no prueba que subir el ECI cause crecimiento.",
+  "Un solo periodo largo; no capta crisis intermedias."
+ ],
+ "literatura": [
+  {
+   "titulo": "[Retracted] Grey Correlation Analysis of Economic Growth and Cultural Industry Competitiveness",
+   "doi": "10.1155/2021/5594080",
+   "anio": 2021,
+   "revista": "Complexity",
+   "citas": 6,
+   "autores": "Li"
+  },
+  {
+   "titulo": "Ink Art Three‐Dimensional Big Data Three‐Dimensional Display Index Prediction Model",
+   "doi": "10.1155/2021/5564361",
+   "anio": 2021,
+   "revista": "Complexity",
+   "citas": 3,
+   "autores": "Cao"
+  },
+  {
+   "titulo": "Rainfall prediction for sustainable economic growth",
+   "doi": "10.21511/ee.07(4-1).2016.04",
+   "anio": 2016,
+   "revista": "Environmental Economics",
+   "citas": 3,
+   "autores": "Chifurira, Chikobvu, Dubihlela"
+  },
+  {
+   "titulo": "ECONOMIC COMPLEXITY INDEX (ECI) AS BEST INDICATOR FOR GROWTH PREDICTION",
+   "doi": "10.52244/ep.2021.21.11",
+   "anio": 2021,
+   "revista": "Economic Profile",
+   "citas": 1,
+   "autores": "Dzotsenidze"
+  },
+  {
+   "titulo": "Extending Economic Complexity Index to a Ternary Complexity Index",
+   "doi": "10.2139/ssrn.3072335",
+   "anio": 2017,
+   "revista": "SSRN Electronic Journal",
+   "citas": 0,
+   "autores": "Ivanova, Strand, Leydesdorff"
+  }
+ ]
+}
