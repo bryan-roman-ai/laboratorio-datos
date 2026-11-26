@@ -8,8 +8,8 @@
 
 ## Hallazgos
 
-- En 140 países, cada punto más de complejidad económica (ECI del Atlas de Harvard) en 2000 se asocia con 0,80 puntos porcentuales más de crecimiento anual del PIB per cápita 2000-2023, a igual ingreso inicial (p=0,000; bootstrap IC 95%: 0,42 a 1,24).
-- Ranking de complejidad 2023 entre 144 países con más de 1 millón de habitantes y exportaciones de más de US$ 1.000 millones: México #28, Brasil #56, Costa Rica #63, Colombia #66, Panamá #68, Uruguay #76, Argentina #77, Chile #85, Perú #100, Ecuador #112.
+- En 140 países, cada punto más de complejidad económica (ECI del Atlas de Harvard) en 2000 se asocia con 0,80 puntos porcentuales más de crecimiento anual del PIB per cápita 2000-2023, a igual ingreso inicial (p<0,001; bootstrap IC 95%: 0,42 a 1,24).
+- Ranking de complejidad 2023 entre 144 países con más de 1 millón de habitantes y exportaciones de más de US$ 1.000 millones: México puesto 28, Brasil puesto 56, Costa Rica puesto 63, Colombia puesto 66, Panamá puesto 68, Uruguay puesto 76, Argentina puesto 77, Chile puesto 85, Perú puesto 100, Ecuador puesto 112.
 - Ecuador: ECI -0,78 en 2000 y -1,03 en 2023; creció 1,95% anual per cápita vs 1,56% que predice el modelo con su complejidad e ingreso inicial.
 
 ## Método
@@ -49,9 +49,9 @@ Referencias encontradas en Crossref por tema (metadatos reales con DOI; listadas
 
 | Archivo | Fuente | Descargado | SHA-256 |
 |---|---|---|---|
-| `data/atlas_paises.json` | https://atlas.hks.harvard.edu/api/graphql | 2026-11-26T18:03:23 | `4399878a2c01a890…` |
-| `data/atlas_countryYear_2000_2023.json` | https://atlas.hks.harvard.edu/api/graphql | 2026-11-26T18:03:24 | `8f6e29474b2f4a51…` |
-| `data/wb_NY.GDP.PCAP.KD_2000.json` | https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.KD?format=json&date=2000&per_page=400 | 2026-11-26T18:03:24 | `9f1d5de78b7c60af…` |
-| `data/wb_NY.GDP.PCAP.KD_2023.json` | https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.KD?format=json&date=2023&per_page=400 | 2026-11-26T18:03:24 | `29babdb00b984719…` |
+| `data/atlas_paises.json` | https://atlas.hks.harvard.edu/api/graphql | 2026-11-26T18:08:33 | `4399878a2c01a890…` |
+| `data/atlas_countryYear_2000_2023.json` | https://atlas.hks.harvard.edu/api/graphql | 2026-11-26T18:08:33 | `8f6e29474b2f4a51…` |
+| `data/wb_NY.GDP.PCAP.KD_2000.json` | https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.KD?format=json&date=2000&per_page=400 | 2026-11-26T18:08:34 | `9f1d5de78b7c60af…` |
+| `data/wb_NY.GDP.PCAP.KD_2023.json` | https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.KD?format=json&date=2023&per_page=400 | 2026-11-26T18:08:34 | `29babdb00b984719…` |
 
 Para repetirlo: `pip install -r requirements.txt && python codigo/correr.py eci-crecimiento-ecuador`

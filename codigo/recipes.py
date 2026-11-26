@@ -22,6 +22,11 @@ def f2(x, d=2):
     return f"{x:.{d}f}".replace(".", ",")
 
 
+def fp(p):
+    """p-valor legible: nunca «p=0,000»."""
+    return "p<0,001" if p < 0.001 else f"p={f2(p, 3)}"
+
+
 def pct(x, d=1):
     return f"{x:.{d}f}%".replace(".", ",")
 
@@ -119,7 +124,7 @@ def enso(prov, p, out):
     checks.append({"nombre": "dejar un país fuera: el efecto regional conserva el signo", "critico": False, "ok": stable,
                    "detalle": f"rango {f2(min(loo))} a {f2(max(loo))}"})
     checks.append({"nombre": "prueba de permutación del efecto regional (999)", "critico": False, "ok": p_perm < 0.10,
-                   "detalle": f"p={f2(p_perm, 3)}"})
+                   "detalle": f"{fp(p_perm)}"})
     sig = r[r.p < 0.10]
     lab_es = {"NV.AGR.TOTL.KD.ZG": "crecimiento agrícola", "NY.GDP.MKTP.KD.ZG": "crecimiento del PIB",
               "NE.EXP.GNFS.KD.ZG": "crecimiento de las exportaciones", "NE.IMP.GNFS.KD.ZG": "crecimiento de las importaciones",
@@ -132,17 +137,17 @@ def enso(prov, p, out):
     if robust:
         H.append(f"En {len(r)} países de América Latina ({y0}-{y1}, sin 2020), +1 °C de ONI se asocia con {f2(base)} puntos porcentuales de {lab_es} "
                  f"(año del evento + año siguiente) en los países con menor peso de {seg_es} en sus exportaciones; el resultado es robusto "
-                 f"(permutación p={f2(p_perm, 3)}, estable al quitar cualquier país).")
+                 f"(permutación {fp(p_perm)}, estable al quitar cualquier país).")
     else:
         H.append(f"En el promedio de {len(r)} países de América Latina ({y0}-{y1}, sin 2020) NO hay un efecto regional claro de El Niño sobre el {lab_es}: "
-                 f"{f2(base)} pp por +1 °C (año del evento + siguiente), prueba de permutación p={f2(p_perm, 3)}. El promedio esconde países que se mueven en sentidos opuestos.")
+                 f"{f2(base)} pp por +1 °C (año del evento + siguiente), prueba de permutación {fp(p_perm)}. El promedio esconde países que se mueven en sentidos opuestos.")
     H.append(f"Separando por tipo de comercio, los países con más peso de {seg_es} en sus exportaciones difieren en {f2(dif)} pp por +1 °C "
-             f"respecto de los demás (p={f2(dif_p, 3)}{'' if dif_p < .1 else ', no significativo'}).")
+             f"respecto de los demás ({fp(dif_p)}{'' if dif_p < .1 else ', no significativo'}).")
     H.append(f"País por país: {len(sig)} de {len(r)} muestran un efecto distinto de cero al 10%. Mayor efecto negativo: {r.iloc[0].pais} "
-             f"({f2(r.iloc[0].beta)} pp por +1 °C; p={f2(r.iloc[0].p, 3)}); mayor positivo: {r.iloc[-1].pais} ({f2(r.iloc[-1].beta)} pp; p={f2(r.iloc[-1].p, 3)}).")
+             f"({f2(r.iloc[0].beta)} pp por +1 °C; {fp(r.iloc[0].p)}); mayor positivo: {r.iloc[-1].pais} ({f2(r.iloc[-1].beta)} pp; {fp(r.iloc[-1].p)}).")
     if "ECU" in set(r.iso3):
         e = r[r.iso3 == "ECU"].iloc[0]
-        H.append(f"Ecuador: {f2(e.beta)} pp de {lab_es} por cada +1 °C de ONI (IC 95%: {f2(e.lo)} a {f2(e.hi)}; p={f2(e.p, 3)}; {e.n} años)"
+        H.append(f"Ecuador: {f2(e.beta)} pp de {lab_es} por cada +1 °C de ONI (IC 95%: {f2(e.lo)} a {f2(e.hi)}; {fp(e.p)}; {e.n} años)"
                  f"{'.' if e.p < .1 else ', no distinguible de cero con datos anuales.'}")
     fig, ax = chart_base(f"El Niño y el {lab_es}", f"Efecto de +1 °C de ONI (año del evento + siguiente), pp. {y0}-{y1}, sin 2020. "
                          f"Color = significativo al 10%; línea = IC 95%. ● = exporta mucho {seg_es}.", "Fuente: NOAA CPC (ONI), Banco Mundial (WDI). Cálculos propios: MCO con errores HAC.")
@@ -224,7 +229,7 @@ def fe_panel(prov, p, out):
             b, lo, hi = 100 * b, 100 * lo, 100 * hi
             txt = f"1 punto más de {labels.get(x, x)} se asocia con {f2(b, 2)}% en {labels.get(y, y)}"
         else: txt = f"1 unidad más de {labels.get(x, x)} se asocia con {f2(b, 3)} en {labels.get(y, y)}"
-        return f"{txt} (IC 95%: {f2(lo, 2)} a {f2(hi, 2)}; p={f2(pv, 3)}; {'signo estable' if stable[x] else 'signo inestable'} al quitar países)."
+        return f"{txt} (IC 95%: {f2(lo, 2)} a {f2(hi, 2)}; {fp(pv)}; {'signo estable' if stable[x] else 'signo inestable'} al quitar países)."
     H = [f"Panel de {d.iso3.nunique()} países ({int(d.year.min())}-{int(d.year.max())}, {len(d)} observaciones) con efectos fijos de país y de año: "
          + interp(xs[0])] + [interp(x) for x in xs[1:]]
     # gráfico: coeficientes con IC
@@ -287,8 +292,8 @@ def atlas_eci(prov, p, out):
     ecu = k.loc["ECU"] if "ECU" in k.index else None
     H = [f"En {len(k)} países, cada punto más de complejidad económica (ECI del Atlas de Harvard) en {y0} se asocia con "
          f"{f2(m.params.eci0, 2)} puntos porcentuales más de crecimiento anual del PIB per cápita {y0}-{y1}, a igual ingreso inicial "
-         f"(p={f2(m.pvalues.eci0, 3)}; bootstrap IC 95%: {f2(blo, 2)} a {f2(bhi, 2)}).",
-         f"Ranking de complejidad {y1} entre {len(rank)} países con más de 1 millón de habitantes y exportaciones de más de US$ 1.000 millones: " + ", ".join(f"{S.NOMBRES.get(c, c)} #{pos[c]}" for c in sorted(pos, key=pos.get)) + "."]
+         f"({fp(m.pvalues.eci0)}; bootstrap IC 95%: {f2(blo, 2)} a {f2(bhi, 2)}).",
+         f"Ranking de complejidad {y1} entre {len(rank)} países con más de 1 millón de habitantes y exportaciones de más de US$ 1.000 millones: " + ", ".join(f"{S.NOMBRES.get(c, c)} puesto {pos[c]}" for c in sorted(pos, key=pos.get)) + "."]
     if ecu is not None:
         pred = m.params.const + m.params.eci0 * ecu.eci0 + m.params.lny0 * ecu.lny0
         H.append(f"Ecuador: ECI {f2(ecu.eci0, 2)} en {y0} y {f2(ecu.eci1, 2)} en {y1}; creció {f2(ecu.g, 2)}% anual per cápita vs "
