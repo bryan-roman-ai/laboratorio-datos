@@ -1,0 +1,34 @@
+[
+ {
+  "archivo": "data/noaa_oni.txt",
+  "url": "https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt",
+  "metodo": "GET",
+  "consulta": null,
+  "descargado": "2026-11-26T18:03:01",
+  "sha256": "118c563331335c8649cdc2677e6be7ae89d1259d901345fcddbc2857af280f7f"
+ },
+ {
+  "archivo": "data/wb_NV.AGR.TOTL.KD.ZG.json",
+  "url": "https://api.worldbank.org/v2/country/ARG;BOL;BRA;CHL;COL;CRI;DOM;ECU;GTM;HND;MEX;NIC;PAN;PER;PRY;SLV;URY;WLD/indicator/NV.AGR.TOTL.KD.ZG?format=json&date=1980:2024&per_page=20000",
+  "metodo": "GET",
+  "consulta": null,
+  "descargado": "2026-11-26T18:03:02",
+  "sha256": "c6b08b4f5f678bb4c73ecd7cd7272711f79c80735b23ec65529490bed8e714ba"
+ },
+ {
+  "archivo": "data/wb_TX.VAL.FOOD.ZS.UN.json",
+  "url": "https://api.worldbank.org/v2/country/ARG;BOL;BRA;CHL;COL;CRI;DOM;ECU;GTM;HND;MEX;NIC;PAN;PER;PRY;SLV;URY;WLD/indicator/TX.VAL.FOOD.ZS.UN?format=json&date=1980:2024&per_page=20000",
+  "metodo": "GET",
+  "consulta": null,
+  "descargado": "2026-11-26T18:03:02",
+  "sha256": "eba3d0628de14077f06b597bcccb1a29b85d7f83b5fc172b7e1ac54464eac267"
+ },
+ {
+  "archivo": "data/wb_NY.GDP.MKTP.KD.ZG.json",
+  "url": "https://api.worldbank.org/v2/country/ARG;BOL;BRA;CHL;COL;CRI;DOM;ECU;GTM;HND;MEX;NIC;PAN;PER;PRY;SLV;URY;WLD/indicator/NY.GDP.MKTP.KD.ZG?format=json&date=1980:2024&per_page=20000",
+  "metodo": "GET",
+  "consulta": null,
+  "descargado": "2026-11-26T18:03:02",
+  "sha256": "1ec221bae6e966fc3f346e14c60411e10bd3fa67823ff7d0443da4977a3e1131"
+ }
+]

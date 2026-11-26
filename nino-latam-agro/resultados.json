@@ -1,0 +1,95 @@
+{
+ "hallazgos": [
+  "El índice ONI de NOAA (anomalía de temperatura del Pacífico, la medida oficial de El Niño) marcó 2,46 °C en ASO 2026; solo 2 estaciones trimestrales desde 1950 lo igualan o superan.",
+  "En el promedio de 17 países de América Latina (1981-2024, sin 2020) NO hay un efecto regional claro de El Niño sobre el crecimiento agrícola: 0,30 pp por +1 °C (año del evento + siguiente), prueba de permutación p=0,543. El promedio esconde países que se mueven en sentidos opuestos.",
+  "Separando por tipo de comercio, los países con más peso de alimentos en sus exportaciones difieren en 1,10 pp por +1 °C respecto de los demás (p=0,160, no significativo).",
+  "País por país: 3 de 17 muestran un efecto distinto de cero al 10%. Mayor efecto negativo: Ecuador (-2,63 pp por +1 °C; p=0,121); mayor positivo: Argentina (7,53 pp; p=0,004).",
+  "Ecuador: -2,63 pp de crecimiento agrícola por cada +1 °C de ONI (IC 95%: -5,96 a 0,69; p=0,121; 43 años), no distinguible de cero con datos anuales."
+ ],
+ "checks": [
+  {
+   "nombre": "reproducción numpy = statsmodels (por país)",
+   "critico": true,
+   "ok": true,
+   "detalle": "máx. diferencia 8.88e-15"
+  },
+  {
+   "nombre": "cobertura: ≥ 12 países con ≥ 25 años",
+   "critico": true,
+   "ok": true,
+   "detalle": "17 países, n mediano 43"
+  },
+  {
+   "nombre": "definición alternativa (ONI máximo del año): mismo signo por país",
+   "critico": false,
+   "ok": true,
+   "detalle": "88% de los países conservan el signo"
+  },
+  {
+   "nombre": "dejar un país fuera: el efecto regional conserva el signo",
+   "critico": false,
+   "ok": true,
+   "detalle": "rango 0,14 a 0,51"
+  },
+  {
+   "nombre": "prueba de permutación del efecto regional (999)",
+   "critico": false,
+   "ok": 0.0,
+   "detalle": "p=0,543"
+  }
+ ],
+ "cifras": {
+  "regional": 0.29823528459913207,
+  "p_perm": 0.543,
+  "dif": 1.102698280418859
+ },
+ "robusto": 0.0,
+ "metodo": "Variable climática: media anual del ONI de NOAA CPC y su rezago de un año (el efecto se mide como la suma: año del evento + año siguiente); robustez con el máximo anual. Resultado: Agriculture, forestry, and fishing, value added (annual % growth) (NV.AGR.TOTL.KD.ZG). Por país: MCO con crecimiento mundial como control y errores HAC (Newey-West, 2 rezagos). Panel: efectos fijos de país e interacción con el grupo de países con peso alto de alimentos en sus exportaciones (TX.VAL.FOOD.ZS.UN, promedio de los últimos 15 años, corte en la mediana), errores agrupados por año. Prueba de permutación (999 barajas de la secuencia anual del ONI). Robustez: dejar un país fuera.",
+ "limitaciones": [
+  "Asociación, no causalidad: otros choques del mismo año (precios de materias primas) pueden coincidir con El Niño.",
+  "Datos anuales: el efecto dentro del año (temporada de lluvias) se diluye.",
+  "La segmentación por tipo de comercio usa la participación de alimentos en las exportaciones de mercancías."
+ ],
+ "literatura": [
+  {
+   "titulo": "The People’s Republic of China and Latin America: The impact of Chinese economic growth on Latin American exports",
+   "doi": "10.18356/c6391b0e-en",
+   "anio": 2016,
+   "revista": "CEPAL Review",
+   "citas": 6,
+   "autores": "Perrotti"
+  },
+  {
+   "titulo": "Socio-economic impact of urban agriculture in Latin America cities: The case of Santiago de Chile",
+   "doi": "10.1016/j.cities.2025.105905",
+   "anio": 2025,
+   "revista": "Cities",
+   "citas": 5,
+   "autores": "Córdoba-Balcells, Parada-Molina, Toboso-Chavero"
+  },
+  {
+   "titulo": "Japan Latin America Relations Then and Now - The Japan Model of Economic Engagement: Opportunities for Latin America and The Caribbean",
+   "doi": "10.17230/map.v4.i7.01",
+   "anio": 2015,
+   "revista": "revista digital mundo asia pacífico",
+   "citas": 4,
+   "autores": ", Kuwayama"
+  },
+  {
+   "titulo": "THE ECONOMIC IMPACT OF SOVEREIGN DEFAULTS IN LATIN AMERICA 1870-2012",
+   "doi": "10.1017/s0212610916000136",
+   "anio": 2016,
+   "revista": "Revista de Historia Económica / Journal of Iberian and Latin American Economic History",
+   "citas": 3,
+   "autores": "Boonman"
+  },
+  {
+   "titulo": "Autonomía económica y género en el sector rural de América Latina",
+   "doi": "10.37819/revhuman.v14i1.1187",
+   "anio": 2022,
+   "revista": "HUMAN REVIEW. International Humanities Review / Revista Internacional De Humanidades",
+   "citas": 3,
+   "autores": "Villafuerte-Pezo, García-Pacheco de Mercado, Lescano-Lopez"
+  }
+ ]
+}

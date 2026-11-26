@@ -1,0 +1,13 @@
+- id: nino-latam-agro
+  estado: hecho
+  titulo: El Niño y la agricultura de América Latina, país por país
+  pregunta: ¿Cuánto cambia el crecimiento agrícola de cada país latinoamericano cuando
+    El Niño se intensifica, y depende de si exporta alimentos?
+  receta: enso
+  params:
+    outcome: NV.AGR.TOTL.KD.ZG
+    segment: TX.VAL.FOOD.ZS.UN
+    y0: 1981
+    y1: 2024
+  literatura: El Nino economic impact Latin America agriculture
+  fecha: '2026-11-26'
